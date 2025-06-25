@@ -3,6 +3,8 @@ Modul Loop Batching
 1. all_data_backend.py:
 
 import os
+import sys
+import uuid
 import json
 import datetime
 import pandas as pd
@@ -15,8 +17,25 @@ from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 from rich.traceback import install
 
+# === PATCH: Advanced Logging with JSON, Trace ID, Error Alert Sink, Custom Log Dir ===
+
+LOG_DIR = os.path.join(r"C:\Users\ASUS\atlas_project\backend-python", "data_logging")
+os.makedirs(LOG_DIR, exist_ok=True)
+LOG_FILE = os.path.join(LOG_DIR, "fastapi_app.log")
+
+logger.remove()
+logger.add(sys.stdout, serialize=True)  # log ke terminal/cmd (JSON)
+logger.add(LOG_FILE, rotation="10 MB", serialize=True)  # log ke file (JSON, rotasi)
+
+def error_alert_sink(message):
+    rec = message.record
+    if rec["level"].name in ("ERROR", "CRITICAL"):
+        # Di sini bisa diganti dengan send_alert_webhook/slack/email
+        print(f"ALERT! [{rec['level'].name}] TraceID={rec['extra'].get('trace_id')}: {rec['message']}")
+
+logger.add(error_alert_sink, level="ERROR")
+
 install()
-logger.add("fastapi_app.log", rotation="10 MB")
 
 # --- BASE_DIR DAN DATA_DIR divisional_level ---
 BASE_DIR = r"C:\Users\ASUS\atlas_project\backend-python\divisional_level"
@@ -60,6 +79,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Middleware Trace ID untuk setiap request http
+@app.middleware("http")
+async def add_trace_id(request: Request, call_next):
+    trace_id = str(uuid.uuid4())
+    request.state.trace_id = trace_id
+    with logger.contextualize(trace_id=trace_id):
+        response = await call_next(request)
+        response.headers['X-Trace-Id'] = trace_id
+        return response
 
 def try_include_router(module_name, router_name="router"):
     try:
@@ -165,8 +194,8 @@ def ambil_data(file_name, offset, limit):
     return df.iloc[offset:offset+limit].to_dict(orient="records")
 
 @app.get("/")
-def root():
-    logger.info("[DEBUG] root called")
+def root(request: Request):
+    logger.info("Root called", extra={"trace_id": request.state.trace_id})
     return {"message": "FastAPI backend is running!"}
 
 from divisional_level.utils_gdrive import (
@@ -178,7 +207,7 @@ from divisional_level.utils_gdrive import (
 )
 
 @app.get("/list_gdrive_files")
-async def list_gdrive_files_endpoint():
+async def list_gdrive_files_endpoint(request: Request):
     try:
         files = get_gdrive_file_list(
             folder_id=UTILS_GDRIVE_FOLDER_ID,
@@ -186,16 +215,16 @@ async def list_gdrive_files_endpoint():
         )
         return {"status": "success", "count": len(files), "files": files}
     except Exception as e:
-        logger.exception(f"[ERROR][ENDPOINT] /list_gdrive_files: {e}")
+        logger.exception(f"[ERROR][ENDPOINT] /list_gdrive_files: {e}", extra={"trace_id": request.state.trace_id})
         return {"status": "error", "error": str(e), "files": []}
 
 @app.get("/list_local_files")
-async def list_local_files_endpoint():
+async def list_local_files_endpoint(request: Request):
     try:
         files = scan_local_files(UTILS_GDRIVE_DATA_DIR)
         return {"status": "success", "count": len(files), "files": files}
     except Exception as e:
-        logger.exception(f"[ERROR][ENDPOINT] /list_local_files: {e}")
+        logger.exception(f"[ERROR][ENDPOINT] /list_local_files: {e}", extra={"trace_id": request.state.trace_id})
         return {"status": "error", "error": str(e), "files": {}}
 
 @app.post("/trigger_gdrive_sync")
@@ -207,7 +236,7 @@ async def trigger_gdrive_sync(request: Request):
     except Exception:
         pass
     try:
-        logger.info("[DEBUG] trigger_gdrive_sync: Syncing other folder")
+        logger.info("[DEBUG] trigger_gdrive_sync: Syncing other folder", extra={"trace_id": request.state.trace_id})
         res_other = trigger_gdrive_sync(
             folder_id=GDRIVE_FOLDER_ID_OTHER,
             data_dir=DATA_DIR,
@@ -217,7 +246,7 @@ async def trigger_gdrive_sync(request: Request):
         log.append(f"Synced other folder: {res_other.get('meta_file_main', '')}")
     except Exception as e:
         log.append(f"Failed to sync other: {e}")
-        logger.error(f"[DEBUG] trigger_gdrive_sync: Failed to sync other: {e}")
+        logger.error(f"[DEBUG] trigger_gdrive_sync: Failed to sync other: {e}", extra={"trace_id": request.state.trace_id})
     return JSONResponse({"status": "done", "log": log})
 
 @app.post("/trigger_download_missing_files")
@@ -251,12 +280,12 @@ async def trigger_download_missing_files(request: Request):
         except Exception as e:
             results.append({"error": str(e)})
             log.append(f"Failed to download for {conf['meta_prefix']}: {e}")
-            logger.error(f"Failed to download for {conf['meta_prefix']}: {e}")
+            logger.error(f"Failed to download for {conf['meta_prefix']}: {e}", extra={"trace_id": request.state.trace_id})
     return {"status": "done", "log": log, "results": results}
 
 @app.post("/sync_meta_only")
-def sync_meta_only_endpoint():
-    logger.info("[DEBUG] /sync_meta_only called")
+def sync_meta_only_endpoint(request: Request):
+    logger.info("[DEBUG] /sync_meta_only called", extra={"trace_id": request.state.trace_id})
     updated = agentic_sync_meta_to_parquet()
     return {"status": "meta_synced", "updated": updated}
 
@@ -277,26 +306,26 @@ def api_get_progress_file(file_id: str):
     return {file_id: prog}
 
 @app.post("/batch_run_agentic")
-def api_run_batch_agentic(background_tasks: BackgroundTasks):
+def api_run_batch_agentic(background_tasks: BackgroundTasks, request: Request):
     def _run():
-        logger.info("[DEBUG] /batch_run_agentic background batch start")
+        logger.info("[DEBUG] /batch_run_agentic background batch start", extra={"trace_id": request.state.trace_id})
         run_batch_agentic()
-        logger.info("[DEBUG] /batch_run_agentic background batch finished")
+        logger.info("[DEBUG] /batch_run_agentic background batch finished", extra={"trace_id": request.state.trace_id})
     background_tasks.add_task(_run)
     return {"status": "batch_agentic_started"}
 
 @app.post("/progress/manual-reset")
-def api_manual_reset(file_id: str = Query(..., description="Nama file untuk direset progress-nya")):
+def api_manual_reset(file_id: str = Query(..., description="Nama file untuk direset progress-nya"), request: Request = None):
     pm = ProgressManager(DATA_DIR)
     pm.reset_progress(file_id)
-    logger.info(f"Progress for {file_id} reset")
+    logger.info(f"Progress for {file_id} reset", extra={"trace_id": request.state.trace_id if request else None})
     return {"status": "reset", "file": file_id}
 
 @app.post("/progress/remove")
-def api_remove_progress(file_id: str = Query(..., description="Nama file untuk dihapus progress-nya")):
+def api_remove_progress(file_id: str = Query(..., description="Nama file untuk dihapus progress-nya"), request: Request = None):
     pm = ProgressManager(DATA_DIR)
     pm.remove_file_progress(file_id)
-    logger.info(f"Progress for {file_id} removed")
+    logger.info(f"Progress for {file_id} removed", extra={"trace_id": request.state.trace_id if request else None})
     return {"status": "removed", "file": file_id}
 
 def _detect_file(tname, tdict, data_dir):
@@ -387,29 +416,31 @@ def api_list_tables():
 def api_all_data_merge(
     limit: int = Query(START_BATCH_SIZE, ge=1, le=BATCH_SIZE),
     offset: int = Query(0, ge=0),
-    table: str = Query(None)
+    table: str = Query(None),
+    request: Request = None
 ):
-    logger.info(f"[DEBUG] api_all_data_merge called: limit={limit}, offset={offset}, table={table}")
+    logger.info(f"[DEBUG] api_all_data_merge called: limit={limit}, offset={offset}, table={table}", extra={"trace_id": request.state.trace_id if request else None})
     try:
         merged = collect_tabular_data(DATA_DIR, only_table=table, include_progress=False, only_processed=True)
         paged_data = merged[offset:offset+limit]
-        logger.info(f"[DEBUG] api_all_data_merge: paged_data length={len(paged_data)}")
+        logger.info(f"[DEBUG] api_all_data_merge: paged_data length={len(paged_data)}", extra={"trace_id": request.state.trace_id if request else None})
         json_compatible = json.loads(json.dumps(paged_data, default=serialize_for_json))
         return JSONResponse(content=json_compatible)
     except Exception as e:
-        logger.exception(f"[all_data_merge][ERROR] {e}")
+        logger.exception(f"[all_data_merge][ERROR] {e}", extra={"trace_id": request.state.trace_id if request else None})
         return JSONResponse(content=[])
 
 @app.get("/all_data_merge_count")
 def api_all_data_merge_count(
-    table: str = Query(None)
+    table: str = Query(None),
+    request: Request = None
 ):
-    logger.info("[DEBUG] api_all_data_merge_count called")
+    logger.info("[DEBUG] api_all_data_merge_count called", extra={"trace_id": request.state.trace_id if request else None})
     try:
         merged = collect_tabular_data(DATA_DIR, only_table=table, include_progress=False, only_processed=True)
         return {"count": len(merged)}
     except Exception as e:
-        logger.exception(f"[all_data_merge_count][ERROR] {e}")
+        logger.exception(f"[all_data_merge_count][ERROR] {e}", extra={"trace_id": request.state.trace_id if request else None})
         return {"count": 0}
 
 @app.post("/all_data_merge")
@@ -421,12 +452,12 @@ async def api_all_data_merge_post(
     offset: int = Query(0, ge=0),
     table: str = Query(None)
 ):
-    logger.info(f"[DEBUG] api_all_data_merge_post called: limit={limit}, offset={offset}, table={table}")
+    logger.info(f"[DEBUG] api_all_data_merge_post called: limit={limit}, offset={offset}, table={table}", extra={"trace_id": request.state.trace_id})
     max_size = 100 * 1024 * 1024
     try:
         body = await request.body()
         if len(body) > max_size:
-            logger.warning("[DEBUG] api_all_data_merge_post: body too large")
+            logger.warning("[DEBUG] api_all_data_merge_post: body too large", extra={"trace_id": request.state.trace_id})
             raise HTTPException(status_code=413, detail="Payload too large (max 100 MB)")
         data = await request.json()
         if isinstance(data, list):
@@ -439,29 +470,29 @@ async def api_all_data_merge_post(
         else:
             merged = []
         if not merged:
-            logger.warning("[DEBUG] api_all_data_merge_post: no data in body, fallback to local")
+            logger.warning("[DEBUG] api_all_data_merge_post: no data in body, fallback to local", extra={"trace_id": request.state.trace_id})
             raise Exception("No data in body, fallback to local")
         json_compatible = json.loads(json.dumps(merged, default=serialize_for_json))
         return JSONResponse(content=json_compatible)
     except Exception as e:
-        logger.exception(f"[all_data_merge_post][ERROR] {e}")
+        logger.exception(f"[all_data_merge_post][ERROR] {e}", extra={"trace_id": request.state.trace_id})
         try:
             merged = collect_tabular_data(DATA_DIR, only_table=table, include_progress=False, only_processed=True)
             paged_data = merged[offset:offset+limit]
             json_compatible = json.loads(json.dumps(paged_data, default=serialize_for_json))
             return JSONResponse(content=json_compatible)
         except Exception as e2:
-            logger.exception(f"[all_data_merge_post][HYBRID-FALLBACK] Fallback total failure: {e2}")
+            logger.exception(f"[all_data_merge_post][HYBRID-FALLBACK] Fallback total failure: {e2}", extra={"trace_id": request.state.trace_id})
             return JSONResponse(content=[])
 
 @app.get("/download_data")
-def download_data(table: str = Query(None, description="Nama table/data yang ingin diunduh (tanpa extensi)")):
-    logger.info(f"[DEBUG] download_data called: table={table}")
+def download_data(table: str = Query(None, description="Nama table/data yang ingin diunduh (tanpa extensi)"), request: Request = None):
+    logger.info(f"[DEBUG] download_data called: table={table}", extra={"trace_id": request.state.trace_id if request else None})
     file_path, file_name, media_type = get_first_parquet_file_path(DATA_DIR, table)
     if not file_path or not os.path.exists(file_path):
-        logger.warning(f"[DEBUG] download_data: file not found")
+        logger.warning(f"[DEBUG] download_data: file not found", extra={"trace_id": request.state.trace_id if request else None})
         raise HTTPException(status_code=404, detail="File data tidak ditemukan")
-    logger.info(f"[DEBUG] download_data: sending file {file_path}")
+    logger.info(f"[DEBUG] download_data: sending file {file_path}", extra={"trace_id": request.state.trace_id if request else None})
     return FileResponse(file_path, media_type=media_type, filename=file_name)
 
 def cleanup_orphan_files(data_dir, meta_paths, exclude_files=None):
@@ -508,17 +539,17 @@ def cleanup_orphan_files_endpoint():
     return {"status": "success", "deleted_files": deleted}
 
 @app.post("/trigger_data_cleaner")
-def trigger_data_cleaner_endpoint():
+def trigger_data_cleaner_endpoint(request: Request):
     try:
         from divisional_level.data_cleaner import cleaner_run
     except Exception as e:
-        logger.error(f"Gagal import cleaner_run: {e}")
+        logger.error(f"Gagal import cleaner_run: {e}", extra={"trace_id": request.state.trace_id})
         return JSONResponse(content={"error": f"Gagal import cleaner_run: {e}"}, status_code=500)
     try:
         result = cleaner_run()
         return JSONResponse(content=result)
     except Exception as e:
-        logger.exception(f"[trigger_data_cleaner_endpoint][ERROR] {e}")
+        logger.exception(f"[trigger_data_cleaner_endpoint][ERROR] {e}", extra={"trace_id": request.state.trace_id})
         return JSONResponse(content={"error": str(e)}, status_code=500)
 
 from divisional_level.data_eda.eda_prefect_flow import eda_analyze_all_files
@@ -979,7 +1010,8 @@ def save_meta(meta_path, meta, prev_meta=None):
                 "last_sync_time", "status_file", "status_process", "history",
                 "sha256", "local_modified", "row_count", "column_count", "gdrive_mime_type", "process_duration",
                 "created_at", "file_type", "source_modified", "record_count",
-                "row_start", "row_end", "upstream_source", "pipeline_job_id", "operator", "tags", "confidentiality", "data_owner", "process_end_time"
+                "row_start", "row_end", "upstream_source", "pipeline_job_id", "operator", "tags", "confidentiality", "data_owner", "process_end_time",
+                "source_sql_file", "file_role", "derived_file_count", "jsonschema_verified"
             ]
             merged = dict(prev_entry) if prev_entry else {}
             for k in allowed:
@@ -1069,6 +1101,7 @@ def batch_changed(prev_files, new_files):
 
 def summarize_files(meta_files, synced_at):
     import hashlib
+
     name = "parquet"
     id_count = len(meta_files)
     gd_exists_vals = [f.get("gdrive_exists", False) for f in meta_files]
@@ -1088,7 +1121,7 @@ def summarize_files(meta_files, synced_at):
         st = f.get("status_file", "unknown")
         status_count[st] = status_count.get(st, 0) + 1
     status_str = ", ".join([f"{k}: {v}" for k, v in status_count.items()])
-    history = f"Status distribusi file: {status_str}. Sinkronisasi terakhir: {synced_at}"
+    history = f"File distribution status: {status_str}. Last synchronization: {synced_at}"
     summary_bytes = json.dumps(meta_files, sort_keys=True, default=str).encode("utf-8")
     sha256 = hashlib.sha256(summary_bytes).hexdigest()
     local_modified_count = sum(1 for f in meta_files if f.get("local_modified"))
@@ -1101,60 +1134,64 @@ def summarize_files(meta_files, synced_at):
     gdrive_mime_type = ", ".join([f"{mt}: {cnt}" for mt, cnt in mime_types.items()])
     process_duration_sum = sum(float(f.get("process_duration") or 0) for f in meta_files)
 
-    # --- SMART SUMMARY PATCH: Link induk-turunan ---
-    # Build linkage: file induk (source_sql_file) -> list of turunan
-    induk_map = {}
+    # --- Build category_file summary for all files (main and derived) ---
+    category_file = {}
+    # Pre-calculate deriveds for main files
+    derived_map = {}
     for f in meta_files:
-        if f.get("file_type", "").startswith("text/") or f.get("file_type", "").startswith("application/sql"):
-            induk_map[f["name"]] = {
-                "meta": f,
-                "turunan": []
-            }
-    for f in meta_files:
-        source = f.get("source_sql_file")
-        if source and source in induk_map:
-            induk_map[source]["turunan"].append(f)
-    # Insight: count completeness, missing, out-of-sync
-    induk_summary = {}
-    for induk_name, data in induk_map.items():
-        induk = data["meta"]
-        turunans = data["turunan"]
-        turunan_status = []
-        synced_count = 0
-        for turunan in turunans:
-            status = "synced"
-            if not turunan.get("local_exists"):
-                status = "missing"
-            elif induk.get("local_modified") and turunan.get("local_modified"):
-                if turunan["local_modified"] < induk["local_modified"]:
-                    status = "stale"
-            turunan_status.append({
-                "name": turunan["name"],
-                "local_exists": turunan.get("local_exists", False),
-                "row_count": turunan.get("row_count"),
-                "column_count": turunan.get("column_count"),
-                "status": status
-            })
-            if status == "synced":
-                synced_count += 1
-        sync_status = f"{synced_count}/{len(turunans)} turunan synced, {len(turunans)-synced_count} not synced"
-        induk_summary[induk_name] = {
-            "local_exists": induk.get("local_exists"),
-            "gdrive_exists": induk.get("gdrive_exists"),
-            "last_modified": induk.get("local_modified"),
-            "turunan": turunan_status,
-            "sync_status": sync_status
-        }
-    # Extra issues: find missing or stale turunan
-    issues = []
-    for induk_name, data in induk_summary.items():
-        for turunan in data["turunan"]:
-            if turunan["status"] == "missing":
-                issues.append(f"File turunan {turunan['name']} dari induk {induk_name} tidak ditemukan/diproses.")
-            elif turunan["status"] == "stale":
-                issues.append(f"File turunan {turunan['name']} dari induk {induk_name} belum di-refresh setelah induk berubah.")
+        if f.get("file_role") == "main file":
+            deriveds = [d for d in meta_files if d.get("source_sql_file") == f["name"]]
+            derived_map[f["name"]] = deriveds
 
-    # --- END SMART SUMMARY PATCH ---
+    for f in meta_files:
+        entry = {
+            "local_exists": f.get("local_exists"),
+            "gdrive_exists": f.get("gdrive_exists"),
+            "last_modified": f.get("local_modified"),
+            "file_role": f.get("file_role"),
+            "jsonschema_verified": f.get("jsonschema_verified"),
+        }
+        # Tambahkan derived_file_count dan sync_status hanya untuk main file
+        if f.get("file_role") == "main file":
+            deriveds = derived_map.get(f["name"], [])
+            entry["derived_file_count"] = len(deriveds)
+            if len(deriveds) > 0:
+                synced_count = sum(1 for d in deriveds if d.get("local_exists"))
+                entry["sync_status"] = f"{synced_count}/{len(deriveds)} derived synced, {len(deriveds)-synced_count} not synced"
+            else:
+                entry["sync_status"] = "0/0 derived synced, 0 not synced"
+        category_file[f["name"]] = entry
+
+    # Extra issues: find missing or stale derived files
+    issues = []
+    for f in meta_files:
+        if f.get("file_role") == "main file":
+            deriveds = derived_map.get(f["name"], [])
+            for derived in deriveds:
+                if not derived.get("local_exists"):
+                    issues.append(f"Derived file {derived['name']} from main {f['name']} is missing/not processed.")
+                elif f.get("local_modified") and derived.get("local_modified") and derived["local_modified"] < f["local_modified"]:
+                    issues.append(f"Derived file {derived['name']} from main {f['name']} is not refreshed after main file changed.")
+
+    # --- PATCH: JSONSchema summary status ---
+    verified_list = [f.get("jsonschema_verified") for f in meta_files]
+    verified_true = sum(1 for v in verified_list if v is True)
+    verified_false = sum(1 for v in verified_list if v is False)
+    verified_none = sum(1 for v in verified_list if v is None)
+    total_files = len(meta_files)
+    if verified_true == total_files and total_files > 0:
+        verified_status = "true"
+    elif verified_true > 0:
+        verified_status = "partial"
+    else:
+        verified_status = "false"
+    jsonschema_verified_summary = {
+        "total_files": total_files,
+        "verified_true": verified_true,
+        "verified_false": verified_false,
+        "verified_none": verified_none,
+        "status": verified_status
+    }
 
     return {
         "name": name,
@@ -1174,8 +1211,9 @@ def summarize_files(meta_files, synced_at):
         "column_count": column_count_sum,
         "gdrive_mime_type": gdrive_mime_type,
         "process_duration": process_duration_sum,
-        "induk_files": induk_summary,
-        "issues": issues
+        "category_file": category_file,
+        "issues": issues,
+        "jsonschema_verified_summary": jsonschema_verified_summary
     }
 
 def _derive_status_process(status_file):
@@ -1249,7 +1287,11 @@ def update_meta(meta_path, gdrive_files, local_files):
             "operator": global_meta.get("operator"),
             "tags": smart_extract_tags(fname),
             "confidentiality": global_meta.get("confidentiality"),
-            "data_owner": global_meta.get("data_owner") or (gfile.get("owners", [{}])[0].get("emailAddress", None) if gfile.get("owners") else None)
+            "data_owner": global_meta.get("data_owner") or (gfile.get("owners", [{}])[0].get("emailAddress", None) if gfile.get("owners") else None),
+            "file_role": prev.get("file_role", None),
+            "source_sql_file": prev.get("source_sql_file", None),
+            "derived_file_count": prev.get("derived_file_count", 0),
+            "jsonschema_verified": prev.get("jsonschema_verified", None)
         }
         if not entry.get("tags"):
             entry["tags"] = smart_extract_tags(fname)
@@ -1327,7 +1369,11 @@ def update_meta(meta_path, gdrive_files, local_files):
             "operator": global_meta.get("operator"),
             "tags": smart_extract_tags(parquet_name),
             "confidentiality": global_meta.get("confidentiality"),
-            "data_owner": global_meta.get("data_owner")
+            "data_owner": global_meta.get("data_owner"),
+            "file_role": None,
+            "source_sql_file": None,
+            "derived_file_count": 0,
+            "jsonschema_verified": None
         }
         if not entry.get("tags"):
             entry["tags"] = smart_extract_tags(parquet_name)
@@ -1363,6 +1409,14 @@ def update_meta(meta_path, gdrive_files, local_files):
             entry["data_owner"] = global_meta.get("data_owner")
             if not entry.get("tags"):
                 entry["tags"] = smart_extract_tags(fname)
+            if "file_role" not in entry:
+                entry["file_role"] = None
+            if "source_sql_file" not in entry:
+                entry["source_sql_file"] = None
+            if "derived_file_count" not in entry:
+                entry["derived_file_count"] = 0
+            if "jsonschema_verified" not in entry:
+                entry["jsonschema_verified"] = None
             new_meta["files"].append(entry)
 
     meta_dict = {e["name"]: e for e in prev_meta.get("files", []) if "name" in e}
@@ -1475,6 +1529,9 @@ import docling  # INTEGRASI DOCLING
 
 from divisional_level.utils_gdrive import load_meta as load_meta_external  # To avoid name clash
 
+# PATCH: Tambahkan jsonschema validator
+from jsonschema import validate as jsonschema_validate, ValidationError as JsonSchemaValidationError
+
 router = APIRouter()
 
 DATA_DIR = r"C:\Users\ASUS\atlas_project\backend-python\divisional_level\data"
@@ -1498,6 +1555,60 @@ def load_meta(meta_path):
         print(f"[DOWNLOAD][META LOAD ERROR] {e}")
         return []
 
+# PATCH: JSONSchema sesuai struktur meta master yang sudah ada (tidak menambah data baru)
+META_ENTRY_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "name": {"type": "string"},
+        "id": {"type": ["string", "null"]},
+        "gdrive_exists": {"type": ["boolean", "null"]},
+        "local_exists": {"type": ["boolean", "null"]},
+        "gdrive_md5": {"type": ["string", "null"]},
+        "local_md5": {"type": ["string", "null"]},
+        "gdrive_modified": {"type": ["string", "null"]},
+        "gdrive_size": {"type": ["integer", "null"]},
+        "local_size": {"type": ["integer", "null"]},
+        "last_sync_time": {"type": ["string", "null"]},
+        "status_file": {"type": ["string", "null"]},
+        "status_process": {"type": ["string", "null"]},
+        "history": {"type": "array"},
+        "sha256": {"type": ["string", "null"]},
+        "local_modified": {"type": ["string", "null"]},
+        "row_count": {"type": ["integer", "null"]},
+        "column_count": {"type": ["integer", "null"]},
+        "gdrive_mime_type": {"type": ["string", "null"]},
+        "process_duration": {"type": ["number", "null"]},
+        "created_at": {"type": ["string", "null"]},
+        "file_type": {"type": ["string", "null"]},
+        "source_modified": {"type": ["string", "null"]},
+        "record_count": {"type": ["integer", "null"]},
+        "row_start": {"type": ["integer", "null"]},
+        "row_end": {"type": ["integer", "null"]},
+        "upstream_source": {"type": ["string", "null"]},
+        "pipeline_job_id": {"type": ["string", "null"]},
+        "operator": {"type": ["string", "null"]},
+        "tags": {"type": ["array", "null"]},
+        "confidentiality": {"type": ["string", "null"]},
+        "data_owner": {"type": ["string", "null"]},
+        "process_end_time": {"type": ["string", "null"]},
+        "cleaning_status": {"type": ["string", "null"]},
+        "schema_check": {"type": ["string", "null"]},
+        "schema": {"type": ["object", "null"]},
+        "null_stats": {"type": ["object", "null"]},
+        "cleaning_log": {"type": ["array", "null"]},
+        "file_role": {"type": ["string", "null"]},
+        "last_status_change": {"type": ["string", "null"]},
+        "parquet_outputs": {"type": ["array", "null"]},
+        "sql_errors": {"type": ["array", "null"]},
+        "duckdb_log_content": {"type": ["string", "null"]},
+        "sql_table_info": {"type": ["object", "null"]},
+        "derived_file_count": {"type": ["integer", "null"]},
+        "jsonschema_verified": {"type": ["boolean", "null"]},
+    },
+    "required": ["name", "status_file"],
+    "additionalProperties": True
+}
+
 def save_meta_agentic(meta_path, new_meta_entries, summary=None):
     old_meta = {}
     if os.path.exists(meta_path):
@@ -1511,6 +1622,27 @@ def save_meta_agentic(meta_path, new_meta_entries, summary=None):
     merged_files = {**old_files, **new_files}
     meta_clean = list(merged_files.values())
     meta_clean.sort(key=lambda x: x.get("name", ""))
+
+    # PATCH: Validasi setiap entry dengan jsonschema sebelum save (tidak menambah data baru, hanya memeriksa data yang ada)
+    for entry in meta_clean:
+        try:
+            jsonschema_validate(instance=entry, schema=META_ENTRY_SCHEMA)
+            entry["jsonschema_verified"] = True
+        except JsonSchemaValidationError as e:
+            print(f"[META][VALIDATION][ERROR] Entry {entry.get('name')}: {e}")
+            entry["jsonschema_verified"] = False
+            raise
+
+    # Tambahkan derived_file_count untuk setiap main file
+    # Main file: file_role == "main file"
+    main_files = [e for e in meta_clean if e.get("file_role") == "main file"]
+    for main_entry in main_files:
+        derived_files = [
+            e for e in meta_clean
+            if e.get("file_role") == "derived file" and e.get("source_sql_file") == main_entry["name"]
+        ]
+        main_entry["derived_file_count"] = len(derived_files)
+
     meta_to_save = {"files": meta_clean}
     if summary is not None:
         meta_to_save["summary"] = summary
@@ -1632,6 +1764,7 @@ def robust_sql_to_parquet(
         sql = clean_sql_for_duckdb(sql_raw)
 
         def filter_supported_statements(sql: str):
+            import sqlparse
             stmts = sqlparse.split(sql)
             allowed = []
             for stmt in stmts:
@@ -1917,6 +2050,14 @@ def download_missing_files(
     for entry in meta_file_entries:
         if "id" not in entry or not entry["id"]:
             entry["id"] = entry.get("name", "")
+    # Tambahkan derived_file_count untuk setiap main file
+    main_files = [e for e in meta_file_entries if e.get("file_role") == "main file"]
+    for main_entry in main_files:
+        derived_files = [
+            e for e in meta_file_entries
+            if e.get("file_role") == "derived file" and e.get("source_sql_file") == main_entry["name"]
+        ]
+        main_entry["derived_file_count"] = len(derived_files)
     save_meta_agentic(meta_path, meta_file_entries, summary=summary)
     print(f"[DOWNLOAD] Selesai. Downloaded: {downloaded}, Skipped: {skipped}, Converted: {converted}")
     return {
