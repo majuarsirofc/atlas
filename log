@@ -1,0 +1,986 @@
+04:59:58.557 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8367
+See https://docs.prefect.io/3.0/manage/self-host#self-host-a-prefect-server for more information on running a dedicated Prefect server.
+05:00:09.242 | WARNING | prefect.server.utilities.postgres_listener - Cannot create Postgres LISTEN connection: PREFECT_API_DATABASE_CONNECTION_URL is not a PostgreSQL connection URL (driver: sqlite+aiosqlite).
+05:00:09.595 | INFO    | Flow run 'prophetic-galago' - Beginning flow run 'prophetic-galago' for flow 'eda-analyze-all-files'
+[EDA] File untuk diproses (baru/berubah): ['churn.parquet', 'dim_customers.parquet', 'dim_products.parquet', 'dm_sales_transaction.parquet', 'fact_sales_transaction.parquet', 'sales_transaction.parquet', 'stg_sales_transaction.parquet']
+C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\evidently\core\metric_types.py:375: FutureWarning: In the future `np.bool` will be defined as the corresponding NumPy scalar.
+  np_bool = np.bool  # type: ignore[attr-defined]
+[TASK_LOG] {'step': 'sampling', 'status': 'started'}
+[TASK_LOG] {'step': 'sampling', 'status': 'started'}
+[TASK_LOG] {'step': 'sampling', 'status': 'started'}
+[TASK_LOG] {'step': 'sampling', 'status': 'started'}
+[TASK_LOG] {'step': 'sampling', 'status': 'started'}
+[TASK_LOG] {'step': 'sampling', 'status': 'started'}
+[TASK_LOG] {'step': 'sampling', 'status': 'started'}
+[SmartSample] n_rows=30 <= min_sample=100, ambil semua data.
+[SmartSample] n_rows=5 <= min_sample=100, ambil semua data.
+[SmartSample] n_rows=30 <= min_sample=100, ambil semua data.
+[SmartSample] n_rows=5 <= min_sample=100, ambil semua data.
+[SmartSample] n_rows=20 <= min_sample=100, ambil semua data.
+[SmartSample] n_rows=10000, sample_size=300, min=100, max=3000, min_frac=0.005, max_frac=0.1
+[SmartSample] n_rows=30 <= min_sample=100, ambil semua data.
+[TASK_LOG] {'step': 'sampling', 'status': 'success', 'rows': 30, 'cols': ['transaction_id', 'sales_date', 'customer_id', 'customer_name', 'customer_address', 'customer_phone', 'customer_email', 'product_id', 'product_name', 'product_category', 'product_price', 'quantity', 'sales_amount', 'created_at']}
+[TASK_LOG] {'step': 'sampling', 'status': 'success', 'rows': 5, 'cols': ['product_id', 'product_name', 'product_category', 'product_price', 'created_at']}
+[TASK_LOG] {'step': 'sampling', 'status': 'success', 'rows': 5, 'cols': ['customer_id', 'customer_name', 'customer_address', 'customer_phone', 'customer_email', 'created_at']}
+[TASK_LOG] {'step': 'sampling', 'status': 'success', 'rows': 20, 'cols': ['transaction_id', 'sales_date', 'customer_name', 'product_name', 'quantity', 'sales_amount', 'created_at']}
+[TASK_LOG] {'step': 'sampling', 'status': 'success', 'rows': 30, 'cols': ['transaction_id', 'customer_id', 'product_id', 'sales_date', 'quantity', 'sales_amount', 'created_at']}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\1. log_sampling\f3ab548e-a15e-44a4-94a5-1550605baabd_sales_transaction_log_sampling.json
+[TASK_LOG] {'step': 'sampling', 'status': 'success', 'rows': 30, 'cols': ['transaction_id', 'sales_date', 'customer_id', 'customer_name', 'customer_address', 'customer_phone', 'customer_email', 'product_id', 'product_name', 'product_category', 'product_price', 'quantity', 'sales_amount', 'created_at']}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\1. log_sampling\c7169629-e329-4058-8630-b8b47a6f03ca_dm_sales_transaction_log_sampling.json
+[TASK_LOG] {'step': 'profiling', 'status': 'started'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\1. log_sampling\ad81d8bc-8298-4f78-b62f-4fdf6135f542_dim_products_log_sampling.json
+[TASK_LOG] {'step': 'profiling', 'status': 'started'}
+[TASK_LOG] {'step': 'profiling', 'status': 'started'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\1. log_sampling\6fefeb92-1a04-4f22-83f3-28ad655b4edc_fact_sales_transaction_log_sampling.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\1. log_sampling\ef971d16-f0c0-48bc-a182-b3cf7fde19d7_stg_sales_transaction_log_sampling.json
+[TASK_LOG] {'step': 'profiling', 'status': 'started'}
+[TASK_LOG] {'step': 'profiling', 'status': 'started'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\1. log_sampling\e7570d69-dd4e-4814-b143-d854186864f7_dim_customers_log_sampling.json
+[TASK_LOG] {'step': 'profiling', 'status': 'started'}
+Upgrade to ydata-sdk
+Improve your data and profiling with ydata-sdk, featuring data quality scoring, redundancy detection, outlier identification, text validation, and synthetic data generation.
+Register at https://ydata.ai/register
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 13.16it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [00:00<00:00, 43.11it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [00:00<00:00,  9.87it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00,  6.23it/s]
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 14/14 [00:00<00:00, 15.94it/s]
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 14/14 [00:01<00:00, 13.91it/s]
+C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:363: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plt.xlabel(x_label)████▌                                                                           | 3/14 [00:00<00:03,  3.58it/s]
+Summarize dataset:  74%|█████████████████████████████████████████▎              | 14/19 [00:02<00:00,  5.92it/s, Get variable types]C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:363: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plt.xlabel(x_label)
+Summarize dataset:  75%|██████████████████████████████████████████              | 15/20 [00:02<00:00,  5.13it/s, Get variable types]C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\pandas\plotting\_matplotlib\core.py:513: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  fig = self.plt.figure(figsize=self.figsize)
+Summarize dataset:  75%|█████████████████████████████████████▌            | 15/20 [00:02<00:00,  5.13it/s, Get dataframe statistics]C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\pandas\plotting\_matplotlib\core.py:513: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  fig = self.plt.figure(figsize=self.figsize)
+Summarize dataset:  68%|████████████████████████▍           | 17/25 [00:03<00:02,  3.07it/s, scatter transaction_id, transaction_id]C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:363: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plt.xlabel(x_label)
+Summarize dataset:  68%|████████████████████████▍           | 17/25 [00:04<00:03,  2.00it/s, scatter transaction_id, transaction_id]C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:363: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plt.xlabel(x_label)
+Summarize dataset:  72%|███████████████████████████▎          | 18/25 [00:05<00:04,  1.50it/s, scatter sales_amount, transaction_id]C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:363: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plt.xlabel(x_label)
+Summarize dataset:  67%|██████████████████████████████████▋                 | 10/15 [00:05<00:03,  1.28it/s, Missing diagram matrix]C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:1009: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  _, ax = plt.subplots(1, 1, figsize=figsize)
+Summarize dataset:  76%|████████████████████████████▉         | 19/25 [00:06<00:04,  1.38it/s, scatter transaction_id, sales_amount]C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:363: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plt.xlabel(x_label)
+Summarize dataset:  68%|████████████████████████▍           | 17/25 [00:06<00:03,  2.51it/s, scatter transaction_id, transaction_id]
+[TASK_LOG] {'step': 'profiling', 'status': 'error', 'error': 'main thread is not in main loop'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\2. log_profiling\ef971d16-f0c0-48bc-a182-b3cf7fde19d7_stg_sales_transaction_log_profiling.json
+[TASK_LOG] {'step': 'great_expectations', 'status': 'started'}
+Summarize dataset: 100%|█████████████████████████████████████████████████████████████████| 15/15 [00:07<00:00,  2.05it/s, Completed]
+Summarize dataset:  56%|████████████████████                | 10/18 [00:07<00:05,  1.35it/s, scatter transaction_id, transaction_id]
+[TASK_LOG] {'step': 'profiling', 'status': 'error', 'error': 'main thread is not in main loop'}               | 0/1 [00:00<?, ?it/s]
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\2. log_profiling\c7169629-e329-4058-8630-b8b47a6f03ca_dm_sales_transaction_log_profiling.json
+[TASK_LOG] {'step': 'great_expectations', 'status': 'started'}
+Summarize dataset:  57%|████████████████████████████████                        | 8/14 [00:07<00:05,  1.07it/s, Missing diagram bar]
+[TASK_LOG] {'step': 'profiling', 'status': 'error', 'error': 'main thread is not in main loop'}
+Summarize dataset:  56%|████████████████████                | 10/18 [00:07<00:05,  1.34it/s, scatter transaction_id, transaction_id]
+[TASK_LOG] {'step': 'profiling', 'status': 'error', 'error': 'main thread is not in main loop'}
+C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:107: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  fig = plt.figure(figsize=figsize)
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\2. log_profiling\6fefeb92-1a04-4f22-83f3-28ad655b4edc_fact_sales_transaction_log_profiling.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\2. log_profiling\ad81d8bc-8298-4f78-b62f-4fdf6135f542_dim_products_log_profiling.json
+[TASK_LOG] {'step': 'great_expectations', 'status': 'started'}
+[TASK_LOG] {'step': 'great_expectations', 'status': 'started'}
+Summarize dataset:  80%|████████████████████████████████        | 20/25 [00:07<00:04,  1.14it/s, scatter sales_amount, sales_amount]C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:396: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  _, ax = plt.subplots(figsize=(7, 2))
+C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:36: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plot = plt.figure(figsize=figsize)
+Summarize dataset:  80%|████████████████████████████████        | 20/25 [00:09<00:02,  2.08it/s, scatter sales_amount, sales_amount]
+[TASK_LOG] {'step': 'profiling', 'status': 'error', 'error': 'main thread is not in main loop'}
+C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\data_context\types\base.py:1642: ChangedInMarshmallow4Warning: `Number` field should not be instantiated. Use `Integer`, `Float`, or `Decimal` instead.
+  config_version = fields.Number(
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\2. log_profiling\f3ab548e-a15e-44a4-94a5-1550605baabd_sales_transaction_log_profiling.json
+C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\data_context\types\base.py:2702: ChangedInMarshmallow4Warning: `Number` field should not be instantiated. Use `Integer`, `Float`, or `Decimal` instead.
+  config_version = fields.Number(
+[TASK_LOG] {'step': 'great_expectations', 'status': 'started'}
+05:00:27.151 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:107: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  fig = plt.figure(figsize=figsize)
+
+05:00:27.800 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:36: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plot = plt.figure(figsize=figsize)
+
+05:00:28.435 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:36: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plot = plt.figure(figsize=figsize)
+
+[TASK_LOG] {'step': 'sampling', 'status': 'success', 'rows': 10000, 'cols': ['RowNumber', 'CustomerId', 'Surname', 'CreditScore', 'Geography', 'Gender', 'Age', 'Tenure', 'Balance', 'NumOfProducts', 'HasCrCard', 'IsActiveMember', 'EstimatedSalary', 'Exited']}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\1. log_sampling\1n84GfkdUBjL5MUEdtId1Z_lyT6wRObyE_churn_log_sampling.json
+[TASK_LOG] {'step': 'profiling', 'status': 'started'}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 14/14 [00:00<00:00, 23.78it/s]
+Summarize dataset:  76%|████████████████████████████████████▌           | 16/21 [00:00<00:00, 21.30it/s, Calculate auto correlation]05:00:29.998 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:107: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  fig = plt.figure(figsize=figsize)
+
+05:00:30.958 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:36: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plot = plt.figure(figsize=figsize)
+
+05:00:31.687 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:36: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plot = plt.figure(figsize=figsize)
+
+Summarize dataset:  24%|███████████▏                                  | 17/70 [00:03<00:11,  4.51it/s, scatter RowNumber, RowNumber]05:00:31.908 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:363: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plt.xlabel(x_label)
+
+05:00:32.335 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\ydata_profiling\visualisation\plot.py:371: UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail.
+  plt.hexbin(series1[indices], series2[indices], gridsize=15, cmap=cmap)
+
+05:00:33.535 | INFO    | great_expectations.data_context.types.base - Created temporary directory 'C:\Users\ASUS\AppData\Local\Temp\tmp1qs9h1s0' for ephemeral docs site
+05:00:33.535 | INFO    | great_expectations.data_context.types.base - Created temporary directory 'C:\Users\ASUS\AppData\Local\Temp\tmpc5j6xyie' for ephemeral docs site
+05:00:33.535 | INFO    | great_expectations.data_context.types.base - Created temporary directory 'C:\Users\ASUS\AppData\Local\Temp\tmptv6er7t1' for ephemeral docs site
+05:00:33.535 | INFO    | great_expectations.data_context.types.base - Created temporary directory 'C:\Users\ASUS\AppData\Local\Temp\tmpsjs6rum6' for ephemeral docs site
+05:00:33.535 | INFO    | great_expectations.data_context.types.base - Created temporary directory 'C:\Users\ASUS\AppData\Local\Temp\tmpvv6f3z5f' for ephemeral docs site
+Generate report structure:   0%|                                                                              | 0/1 [00:09<?, ?it/s]
+[TASK_LOG] {'step': 'profiling', 'status': 'error', 'error': 'main thread is not in main loop'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\2. log_profiling\e7570d69-dd4e-4814-b143-d854186864f7_dim_customers_log_profiling.json
+[TASK_LOG] {'step': 'great_expectations', 'status': 'started'}
+Exception ignored in: <function Image.__del__ at 0x0000023E8EAEC670>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 4017, in __del__
+05:00:34.471 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+05:00:34.476 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+                                                                                                                                        self.tk.call('image', 'delete', self.name)                                                                 | 0/1 [00:00<?, ?it/s]
+RuntimeError: main thread is not in main loop
+05:00:34.479 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+05:00:34.482 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+                                                                                                                                    05:00:34.482 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 85.60it/s]05:00:34.491 | INFO    | great_expectations.data_context.types.base - Created temporary directory 'C:\Users\ASUS\AppData\Local\Temp\tmp50fum5p2' for ephemeral docs site
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 55.55it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 13.70it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  6.03it/s]05:00:34.660 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configurCalculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  5.14it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  5.15it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  4.87it/s]
+05:00:34.698 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 1/1 [00:00<00:00,  5.61it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  5.67it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  5.66it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  4.96it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  4.81it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 34.36it/s]
+05:00:34.720 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                          | 0/3 [00:00<?, ?it/s]
+  warnings.warn(ics:   0%|                                                                                    | 0/3 [00:00<?, ?it/s]
+Calculating Metrics:   0%|                                                                                    | 0/3 [00:00<?, ?it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 59.73it/s]
+Calculating Metrics:   0%|                                                                                    | 0/3 [00:00<?, ?it/s]05:00:34.746 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.█████████▋                         | 2/3 [00:00<00:00, 77.09it/s]
+  warnings.warn(ics:  67%|██████████████████████████████████████████████████▋                         | 2/3 [00:00<00:00, 96.04it/s]
+Calculating Metrics:  67%|██████████████████████████████████████████████████▋                         | 2/3 [00:00<00:00, 72.67it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 43.76it/s]
+Calculating Metrics:  33%|█████████████████████████▎                                                  | 1/3 [00:00<00:00, 34.16it/s]
+05:00:34.771 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.██████████████████████████████████████████████████| 3/3 [00:00<00:00, 59.37it/s]
+  pd.to_datetime(arr[:min(10, len(arr))])█████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 59.37it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 60.64it/s]
+Calculating Metrics:  67%|██████████████████████████████████████████████████▋                         | 2/3 [00:00<00:00, 56.92it/s]05:00:34.773 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+05:00:34.774 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+
+
+
+
+05:00:34.777 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 49.22it/s]05:00:34.779 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is c05:00:34.780 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+
+
+
+
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 46.53it/s]05:00:34.782 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectatioCalculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 35.73it/s]r
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 35.50it/s]05:00:34.802 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])█████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 43.71it/s]
+
+
+05:00:34.805 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 34.02it/s]05:00:34.807 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+
+
+05:00:34.810 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+
+
+
+05:00:34.810 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+
+Calculating Metrics:  33%|█████████████████████████▎                                                  | 2/6 [00:00<00:00, 69.58it/s]05:00:34.813 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+05:00:34.815 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+
+
+05:00:34.818 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 34.16it/s]05:00:34.818 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+05:00:34.824 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+
+
+
+
+05:00:34.835 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics:   0%|                                                                                    | 0/6 [00:00<?, ?it/s]05:00:34.835 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is c05:00:34.858 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 20.48it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 22.76it/s]
+05:00:34.885 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.                                                          | 0/6 [00:00<?, ?it/s]
+  pd.to_datetime(arr[:min(10, len(arr))])
+
+Calculating Metrics:   0%|                                                                                    | 0/6 [00:00<?, ?it/s]05:00:34.886 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+05:00:34.888 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(arr[:min(10, len(arr))])
+
+
+
+
+05:00:34.890 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:43: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.                                                                                05:00:34.892 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                   | 2/6 [00:00<00:00, 57.90it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 31.34it/s]
+05:00:34.993 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 6/6 [00:00<00:00, 58.07it/s]
+  warnings.warn(ics:  67%|██████████████████████████████████████████████████▋                         | 4/6 [00:00<00:00, 41.67it/s]
+Calculating Metrics:  67%|██████████████████████████████████████████████████▋                         | 4/6 [00:00<00:00, 48.48it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 36.12it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 32.91it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 33.20it/s]05:00:35.069 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.███████████████████████████████████| 6/6 [00:00<00:00, 46.08it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 47.92it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 49.30it/s]
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 28.10it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 27.85it/s]
+05:00:35.152 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                          | 0/8 [00:00<?, ?it/s]
+  warnings.warn(ics:   0%|                                                                                    | 0/8 [00:00<?, ?it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 49.30it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 37.25it/s]
+05:00:35.278 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.█████▌                            | 5/8 [00:00<00:00, 48.19it/s]
+  warnings.warn(ics:  62%|███████████████████████████████████████████████▌                            | 5/8 [00:00<00:00, 49.39it/s]
+Calculating Metrics:  62%|███████████████████████████████████████████████▌                            | 5/8 [00:00<00:00, 49.72it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 37.92it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 35.74it/s]
+05:00:35.371 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 8/8 [00:00<00:00, 48.19it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 49.39it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 76.81it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 36.15it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 33.78it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 33.26it/s]
+05:00:35.450 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                          | 0/8 [00:00<?, ?it/s]
+  warnings.warn(ics:   0%|                                                                                    | 0/4 [00:00<?, ?it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 49.17it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 35.07it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 39.43it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 44.92it/s]
+Calculating Metrics:  62%|███████████████████████████████████████████████▌                            | 5/8 [00:00<00:00, 44.73it/s]
+05:00:35.594 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuCalculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 35.96it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 20.59it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 37.35it/s]
+05:00:35.661 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 8/8 [00:00<00:00, 75.00it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 75.00it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 75.00it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 40.74it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 44.31it/s]
+05:00:35.697 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                 | 2/4 [00:00<00:00, 204.57it/s]
+  warnings.warn(ics:   0%|                                                                                    | 0/4 [00:00<?, ?it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 47.78it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 47.57it/s]
+05:00:35.725 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 4/4 [00:00<00:00, 98.37it/s]
+  warnings.warn(ics:  75%|█████████████████████████████████████████████████████████                   | 3/4 [00:00<00:00, 98.76it/s]
+Calculating Metrics:  75%|████████████████████████████████████████████████████████▎                  | 3/4 [00:00<00:00, 155.77it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 54.49it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 57.88it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 50.81it/s]
+05:00:35.773 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 4/4 [00:00<00:00, 66.24it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 95.95it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 71.76it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 56.92it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 50.94it/s]
+05:00:35.802 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                 | 4/9 [00:00<00:00, 634.90it/s]
+  warnings.warn(ics:   0%|                                                                                    | 0/4 [00:00<?, ?it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 73.31it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 50.22it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 59.50it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 75.53it/s]
+Calculating Metrics:  78%|██████████████████████████████████████████████████████████▎                | 7/9 [00:00<00:00, 173.37it/s]
+Calculating Metrics:  75%|█████████████████████████████████████████████████████████                   | 3/4 [00:00<00:00, 91.96it/s]
+05:00:35.834 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectatiCalculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 45.09it/s]u
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 38.43it/s]
+Calculating Metrics:  44%|█████████████████████████████████▎                                         | 4/9 [00:00<00:00, 484.86it/s]
+Calculating Metrics:  89%|██████████████████████████████████████████████████████████████████▋        | 8/9 [00:00<00:00, 115.91it/s]
+05:00:35.903 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 4/4 [00:00<00:00, 44.92it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 36.04it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 58.57it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 32.93it/s]
+05:00:35.946 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                          | 0/9 [00:00<?, ?it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 43.97it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 36.61it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 62.98it/s]
+05:00:36.035 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.████████████████████████▋        | 8/9 [00:00<00:00, 117.97it/s]
+  warnings.warn(ics:  89%|███████████████████████████████████████████████████████████████████▌        | 8/9 [00:00<00:00, 94.26it/s]
+Calculating Metrics:  78%|██████████████████████████████████████████████████████████▎                | 7/9 [00:00<00:00, 156.78it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 66.61it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 51.99it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 85.30it/s]
+05:00:36.069 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 9/9 [00:00<00:00, 88.66it/s]
+  warnings.warn(ics: 100%|███████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 116.92it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 105.52it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 63.27it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 75.63it/s]
+05:00:36.103 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                          | 0/4 [00:00<?, ?it/s]
+  warnings.warn(
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 81.24it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 43.92it/s]
+05:00:36.151 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 4/4 [00:00<00:00, 78.59it/s]
+  warnings.warn(ics:  75%|█████████████████████████████████████████████████████████                   | 3/4 [00:00<00:00, 87.83it/s]
+Calculating Metrics:  75%|████████████████████████████████████████████████████████▎                  | 3/4 [00:00<00:00, 104.98it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 56.76it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 48.04it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 52.10it/s]
+05:00:36.195 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 4/4 [00:00<00:00, 61.56it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 61.39it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 84.29it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 46.14it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 49.14it/s]
+05:00:36.221 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                          | 0/4 [00:00<?, ?it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 50.70it/s]
+05:00:36.265 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 4/4 [00:00<00:00, 89.00it/s]
+  warnings.warn(ics:  75%|████████████████████████████████████████████████████████▎                  | 3/4 [00:00<00:00, 100.73it/s]
+Calculating Metrics:  75%|████████████████████████████████████████████████████████▎                  | 3/4 [00:00<00:00, 164.33it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 63.27it/s]
+05:00:36.274 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 4/4 [00:00<00:00, 67.82it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 91.28it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 91.28it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 49.18it/s]
+Calculating Metrics:   0%|                                                                                    | 0/4 [00:00<?, ?it/s]05:00:36.298 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.███████████████████████████████████| 4/4 [00:00<00:00, 63.96it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 63.96it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 90.34it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 43.68it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 42.29it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 40.40it/s]
+05:00:36.347 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                          | 0/6 [00:00<?, ?it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 54.56it/s]
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 36.69it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 45.00it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 63.59it/s]
+Calculating Metrics:  50%|██████████████████████████████████████                                      | 3/6 [00:00<00:00, 61.21it/s]
+Calculating Metrics:  67%|██████████████████████████████████████████████████▋                         | 4/6 [00:00<00:00, 70.15it/s]
+Calculating Metrics:  75%|█████████████████████████████████████████████████████████                   | 3/4 [00:00<00:00, 84.01it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 41.75it/s]i
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 37.64it/s]u
+Calculating Metrics:   0%|                                                                                    | 0/6 [00:00<?, ?it/s]05:00:36.464 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.███████████████████████████████████| 6/6 [00:00<00:00, 57.72it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 44.13it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 50.71it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 32.65it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 38.22it/s]
+05:00:36.504 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 27.00it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 31.43it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 39.12it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 54.54it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 63.78it/s]
+Calculating Metrics:  67%|██████████████████████████████████████████████████▋                         | 4/6 [00:00<00:00, 49.50it/s]
+05:00:36.644 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configu
+ration to your Checkpoint config or checkpoint_run() method instead.
+05:00:36.671 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\metrics\column_map_metrics\column_values_increasing.py:59: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value '1' has dtype incompatible with timedelta64[ns], please explicitly cast to a compatible dtype first.
+  series_diff[series_diff.isnull()] = 1
+
+05:00:36.681 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:242: UserWarning: Agentic GE expectation failed: '>=' not supported between instances of 'Timedelta' and 'int'
+Calculating Metrics:  38%|████████████████████████████▌                                               | 3/8 [00:00<00:00, 23.88it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 29.33it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 23.10it/s]
+05:00:36.814 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 6/6 [00:00<00:00, 42.62it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 49.90it/s]
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 20.05it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 17.63it/s]
+05:00:36.919 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                | 6/27 [00:00<00:00, 266.56it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 34.30it/s]
+Calculating Metrics:  62%|███████████████████████████████████████████████▌                            | 5/8 [00:00<00:00, 34.09it/s]
+Calculating Metrics:  38%|████████████████████████████▌                                               | 3/8 [00:00<00:00, 23.57it/s]
+Calculating Metrics:  30%|██████████████████████▏                                                    | 8/27 [00:00<00:00, 91.60it/s]
+Calculating Metrics:  25%|███████████████████                                                         | 2/8 [00:00<00:00, 47.57it/s]
+Calculating Metrics:  25%|███████████████████                                                         | 2/8 [00:00<00:00, 46.38it/s]
+05:00:37.003 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\metrics\column_map_metrics\column_values_increasing.py:59: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value '1' has dtype incompatible with timedelta64[ns], please explicitly cast to a compatible dtype first.
+Calculating Metrics:  38%|████████████████████████████▌                                               | 3/8 [00:00<00:00, 17.99it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 34.09it/s]05:00:37.159 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\metrics\column_map_metrics\column_values_increasing.py:59: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value '1' has dtype incompatible with timedelta64[ns], please explicitly cast to a compatible dtype first.etrics:  38%|████████████████████████████▌                                               | 3/8 [00:00<00:00, 13.94it/s]
+  series_diff[series_diff.isnull()] = 1                                                                       | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:  25%|███████████████████                                                         | 2/8 [00:00<00:00, 34.20it/s]
+
+05:00:37.159 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:242: UserWarning: Agentic GE expectation failed: '>=' not supported between instances of 'Timedelta' and 'int'
+  warnings.warn(f"Agentic GE expectation failed: {e}")
+Calculating Metrics:  38%|████████████████████████████▌                                               | 3/8 [00:00<00:00, 12.79it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 16.04it/s]
+05:00:37.303 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.█████████████████████████████▎  | 26/27 [00:00<00:00, 66.14it/s]
+  warnings.warn(ics:  62%|███████████████████████████████████████████████▌                            | 5/8 [00:00<00:00, 22.58it/s]
+Calculating Metrics:  62%|███████████████████████████████████████████████▌                            | 5/8 [00:00<00:00, 22.58it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 16.26it/s]
+05:00:37.448 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.████████████████████████████████| 27/27 [00:00<00:00, 57.70it/s]
+  warnings.warn(ics:  50%|██████████████████████████████████████                                      | 2/4 [00:00<00:00, 25.96it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 21.43it/s]
+Calculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████| 27/27 [00:00<00:00, 42.75it/s]
+Calculating Metrics:  27%|████████████████████                                                       | 8/30 [00:00<00:00, 63.03it/s]
+                                                                                                                                    [STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\3. log_validation\c7169629-e329-4058-8630-b8b47a6f03ca_dm_sales_transaction_log_validation.json█████████▎                        | 20/30 [00:00<00:00, 78.67it/s]
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 14.01it/s]
+05:00:37.583 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                          | 0/9 [00:00<?, ?it/s]
+  warnings.warn(ics:  75%|█████████████████████████████████████████████████████████                   | 3/4 [00:00<00:00, 17.21it/s]
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00,  8.17it/s]
+05:00:37.872 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                  | 2/9 [00:00<00:00, 19.46it/s]
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 17.21it/s]
+Calculating Metrics:   0%|                                                                                    | 0/9 [00:00<?, ?it/s]
+Calculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████| 30/30 [00:00<00:00, 41.00it/s]
+Calculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████| 30/30 [00:00<00:00, 77.75it/s]
+[TASK_LOG] {'step': 'great_expectations', 'status': 'success'}██████████████████████████████████████| 30/30 [00:00<00:00, 77.80it/s][STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\3. log_validation\ef971d16-f0c0-48bc-a182-b3cf7fde19d7_stg_sales_transaction_log_validation.json                                           | 0/4 [00:00<?, ?it/s]
+Calculating Metrics:  56%|██████████████████████████████████████████▏                                 | 5/9 [00:00<00:00, 12.45it/s]
+Calculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████| 30/30 [00:00<00:00, 35.16it/s]
+Calculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████| 30/30 [00:00<00:00, 77.75it/s]
+Calculating Metrics:  50%|██████████████████████████████████████                                      | 2/4 [00:00<00:00, 22.05it/s]
+Calculating Metrics:  50%|██████████████████████████████████████                                      | 2/4 [00:00<00:00, 13.06it/s][STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\3. log_validation\f3ab548e-a15e-44a4-94a5-1550605baabd_sales_transaction_log_validation.json████████████████████                   | 3/4 [00:00<00:00, 19.59it/s]
+Calculating Metrics:  78%|███████████████████████████████████████████████████████████                 | 7/9 [00:00<00:00, 11.87it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 10.53it/s]
+05:00:38.449 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 9/9 [00:00<00:00, 12.70it/s]
+  warnings.warn(
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 15.05it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 10.22it/s]
+05:00:38.484 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 15.05it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 11.92it/s]
+Calculating Metrics:   0%|                                                                                    | 0/6 [00:00<?, ?it/s]
+05:00:38.560 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(ics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 15.05it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00,  6.33it/s]
+05:00:39.496 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 6/6 [00:00<00:00,  9.98it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00,  9.42it/s]
+05:00:39.602 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 6/6 [00:00<00:00,  9.98it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00,  6.91it/s]
+05:00:39.642 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 12.57it/s]
+05:00:40.040 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 8/8 [00:00<00:00, 33.71it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 17.83it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 27.06it/s]
+05:00:40.151 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 17.96it/s]
+05:00:40.199 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 11.99it/s]
+05:00:40.527 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                  | 3/9 [00:00<00:00, 23.98it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 12.98it/s]
+05:00:40.726 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 9/9 [00:00<00:00, 28.46it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 16.75it/s]
+05:00:40.870 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 9/9 [00:00<00:00, 28.46it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00,  9.72it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 25.36it/s]05:00:41.044 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                   | 2/6 [00:00<00:00, 38.61it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 13.85it/s]
+05:00:41.428 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 6/6 [00:00<00:00, 17.73it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 10.66it/s]
+05:00:41.563 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 6/6 [00:00<00:00, 17.73it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 11.78it/s]
+05:00:41.758 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                  | 2/8 [00:00<00:00, 64.32it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 13.98it/s]
+05:00:42.134 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 8/8 [00:00<00:00, 19.84it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 13.42it/s]
+05:00:42.277 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 8/8 [00:00<00:00, 19.84it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 13.73it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 20.67it/s]05:00:42.534 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 11.53it/s]
+05:00:42.616 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                  | 3/9 [00:00<00:00, 25.65it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 16.50it/s]
+05:00:42.947 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 9/9 [00:00<00:00, 25.73it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 11.03it/s]
+05:00:42.980 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 11.81it/s]
+05:00:43.052 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                          | 0/4 [00:00<?, ?it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 31.14it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 46.30it/s]05:00:43.156 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 53.31it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 103.22it/s]
+Calculating Metrics:  44%|█████████████████████████████████▎                                         | 4/9 [00:00<00:00, 313.15it/s]
+05:00:43.213 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 86.55it/s]
+05:00:43.263 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 6/6 [00:00<00:00, 97.80it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 95.90it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 62.77it/s]
+05:00:43.301 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 97.74it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 63.21it/s]05:00:43.382 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 46.71it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 58.14it/s]
+05:00:43.493 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.██████████████████████████████████| 4/4 [00:00<00:00, 68.53it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 55.78it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 87.61it/s]
+05:00:43.529 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 47.87it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 57.76it/s]05:00:43.599 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 69.87it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 77.65it/s]
+Calculating Metrics:  33%|█████████████████████████▎                                                  | 2/6 [00:00<00:00, 65.58it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 115.07it/s]
+05:00:43.666 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(                                                                                                                    05:00:43.721 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\metrics\column_map_metrics\column_values_increasing.py:59: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value '1' has dtype incompatible with timedelta64[ns], please explicitly cast to a compatible dtype first.
+  series_diff[series_diff.isnull()] = 1
+
+
+05:00:43.726 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:242: UserWarning: Agentic GE expectation failed: '>=' not supported between instances of 'Timedelta' and 'int'
+  warnings.warn(f"Agentic GE expectation failed: {e}")
+Calculating Metrics:  38%|████████████████████████████▌                                               | 3/8 [00:00<00:00, 62.95it/s]
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 37.03it/s]
+05:00:43.873 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.                                  | 3/6 [00:00<00:00, 67.57it/s]
+  warnings.warn(
+
+Calculating Metrics: 100%|████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 14.72it/s]
+Calculating Metrics:  38%|████████████████████████████▏                                              | 3/8 [00:00<00:00, 146.20it/s]
+05:00:44.155 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\expectation.py:1481: UserWarning: `result_format` configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+Calculating Metrics:  38%|████████████████████████████▌                                               | 3/8 [00:00<00:00, 34.70it/s]
+05:00:44.181 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\metrics\column_map_metrics\column_values_increasing.py:59: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value '1' has dtype incompatible with timedelta64[ns], please explicitly cast to a compatible dtype first.
+  series_diff[series_diff.isnull()] = 1
+
+05:00:44.183 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:242: UserWarning: Agentic GE expectation failed: '>=' not supported between instances of 'Timedelta' and 'int'
+Calculating Metrics:  38%|████████████████████████████▌                                               | 3/8 [00:00<00:00, 25.33it/s]
+
+Calculating Metrics:  38%|████████████████████████████▌                                               | 3/8 [00:00<00:00, 29.73it/s]
+Calculating Metrics:  91%|██████████████████████████████████████████████████████████████████▍      | 61/67 [00:00<00:00, 122.27it/s]
+05:00:44.695 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\venv\lib\site-packages\great_expectations\expectations\metrics\column_map_metrics\column_values_increasing.py:59: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value '1' has dtype incompatible with timedelta64[ns], please explicitly cast to a compatible dtype first.
+  series_diff[series_diff.isnull()] = 1
+
+Calculating Metrics:  16%|███████████▌                                                              | 10/64 [00:00<00:00, 95.60it/s]05:00:44.695 | WARNING | py.warnings - C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\my_ge_agentic_utils.py:242Calculating Metrics:  38%|████████████████████████████▌                                               | 3/8 [00:00<00:00,  9.84it/s]
+Calculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████| 67/67 [00:01<00:00, 57.45it/s]
+Calculating Metrics:  91%|██████████████████████████████████████████████████████████████████▍      | 61/67 [00:00<00:00, 122.27it/s]
+Calculating Metrics: 100%|█████████████████████████████████████████████████████████████████████████| 67/67 [00:01<00:00, 122.27it/s]
+Calculating Metrics:   0%|                                                                                   | 0/76 [00:00<?, ?it/s]
+[TASK_LOG] {'step': 'great_expectations', 'status': 'success'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\3. log_validation\ad81d8bc-8
+Calculating Metrics:   8%|█████▉                                                                     | 6/76 [00:00<00:01, 49.05it/s]
+[TASK_LOG] {'step': 'advanced_eda', 'status': 'started'}
+[AGENTIC][WARNING] .str.length() failed after cast for col=product_name: 'StringNameSpace' object has no attribute 'length'; dtype=StCalculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████| 64/64 [00:00<00:00, 65.74it/s]
+Calculating Metrics:  11%|███████▉                                                                   | 8/76 [00:00<00:01, 49.05it/s][TASK_LOG] {'step': 'great_expectations', 'status': 'success'}                                        | 8/76 [00:00<00:01, 49.05it/s]
+Calculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████| 64/64 [00:00<00:00, 77.31it/s]
+Calculating Metrics:  45%|████████████████████████████████▋                                        | 34/76 [00:00<00:00, 111.45it/s][STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\3. log_validation\6fefeb92-1a[TASK_LOG] {'step': 'advanced_eda', 'status': 'started'}idation.json
+Calculating Metrics: 100%|█████████████████████████████████████████████████████████████████████████| 76/76 [00:00<00:00, 136.05it/s]
+[TASK_LOG] {'step': 'great_expectations', 'status': 'success'}█████████████████████████████████████| 76/76 [00:00<00:00, 171.80it/s]
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\3. log_validation\e7570d69-dd4e-4814-b143-d854186864f7_dim_customers_log_validation.json
+[TASK_LOG] {'step': 'advanced_eda', 'status': 'started'}
+[AGENTIC][WARNING] .str.length() failed after cast for col=customer_name: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['John Doe', 'Jane Smith', 'David Johnson', 'Emily Davis', 'Michael Wilson']
+[AGENTIC][WARNING] .str.length() failed after cast for col=customer_address: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['123 Main St, Jakarta', '456 Elm St, Jakarta', '789 Oak St, Jakarta', '321 Maple St, Jakarta', '654 Pine St, Jakarta']
+[AGENTIC][WARNING] .str.length() failed after cast for col=customer_email: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['johndoe@example.com', 'janesmith@example.com', 'davidjohnson@example.com', 'emilydavis@example.com', 'michaelwilson@example.com']
+Summarize dataset:  24%|███████████▏                                  | 17/70 [00:18<00:11,  4.51it/s, scatter RowNumber, RowNumber][AGENTIC][WARNING] .str.length() failed after cast for col=customer_name: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['David Johnson', 'Jane Smith', 'Michael Wilson', 'Emily Davis', 'John Doe']
+[AGENTIC][WARNING] .str.length() failed after cast for col=product_name: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['Jeans', 'Shirt', 'Shoes', 'Watch', 'Jeans']
+[AGENTIC][WARNING] .str.length() failed after cast for col=customer_name: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['David Johnson', 'Jane Smith', 'Michael Wilson', 'Emily Davis', 'John Doe']
+[AGENTIC][WARNING] .str.length() failed after cast for col=customer_address: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['789 Oak St, Jakarta', '456 Elm St, Jakarta', '654 Pine St, Jakarta', '321 Maple St, Jakarta', '123 Main St, Jakarta']
+[AGENTIC][WARNING] .str.length() failed after cast for col=customer_email: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['davidjohnson@example.com', 'janesmith@example.com', 'michaelwilson@example.com', 'emilydavis@example.com', 'johndoe@example.com']
+[AGENTIC][WARNING] .str.length() failed after cast for col=product_name: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['Jeans', 'Shirt', 'Watch', 'Shoes', 'Jeans']
+[AGENTIC][WARNING] .str.length() failed after cast for col=product_category: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['Apparel', 'Apparel', 'Accessories', 'Footwear', 'Apparel']
+[AGENTIC][WARNING] .str.length() failed after cast for col=customer_name: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['David Johnson', 'Jane Smith', 'Michael Wilson', 'Emily Davis', 'John Doe']
+[AGENTIC][WARNING] .str.length() failed after cast for col=customer_address: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['789 Oak St, Jakarta', '456 Elm St, Jakarta', '654 Pine St, Jakarta', '321 Maple St, Jakarta', '123 Main St, Jakarta']
+[AGENTIC][WARNING] .str.length() failed after cast for col=customer_email: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['davidjohnson@example.com', 'janesmith@example.com', 'michaelwilson@example.com', 'emilydavis@example.com', 'johndoe@example.com']
+[AGENTIC][WARNING] .str.length() failed after cast for col=product_name: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['Jeans', 'Shirt', 'Watch', 'Shoes', 'Jeans']
+[AGENTIC][WARNING] .str.length() failed after cast for col=product_category: 'StringNameSpace' object has no attribute 'length'; dtype=String; contoh=['Apparel', 'Apparel', 'Accessories', 'Footwear', 'Apparel']
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\ad81d8bc-8298-4f78-b62f-4fdf6135f542_dim_products_eda_log.json
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\ad81d8bc-8298-4f78-b62f-4fdf6135f542_dim_products_eda_final.json
+[TASK_LOG] {'step': 'advanced_eda', 'status': 'success'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\4. log _advance_eda\ad81d8bc-8298-4f78-b62f-4fdf6135f542_dim_products_log__advance_eda.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\5. log_audit_testing\ad81d8bc-8298-4f78-b62f-4fdf6135f542_dim_products_log_audit_testing.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\6. log_summary_eda\ad81d8bc-8298-4f78-b62f-4fdf6135f542_dim_products_log_summary_eda.json
+[TASK_LOG] {'step': 'eda_log', 'status': 'started'}
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\ad81d8bc-8298-4f78-b62f-4fdf6135f542_dim_products_eda_log.json
+[TASK_LOG] {'step': 'eda_log', 'status': 'success'}
+[TASK_LOG] {'step': 'eda_summary', 'status': 'started'}
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\ad81d8bc-8298-4f78-b62f-4fdf6135f542_dim_products_eda_final.json
+[TASK_LOG] {'step': 'eda_summary', 'status': 'success'}
+[TASK_LOG] {'step': 'update_meta_status', 'status': 'skipped'}
+05:00:49.041 | INFO    | Task run 'load_and_analyze_file-175' - Finished in state Completed()
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\e7570d69-dd4e-4814-b143-d854186864f7_dim_customers_eda_log.json
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\e7570d69-dd4e-4814-b143-d854186864f7_dim_customers_eda_final.json
+[TASK_LOG] {'step': 'advanced_eda', 'status': 'success'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\4. log _advance_eda\e7570d69-dd4e-4814-b143-d854186864f7_dim_customers_log__advance_eda.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\5. log_audit_testing\e7570d69-dd4e-4814-b143-d854186864f7_dim_customers_log_audit_testing.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\6. log_summary_eda\e7570d69-dd4e-4814-b143-d854186864f7_dim_customers_log_summary_eda.json
+[TASK_LOG] {'step': 'eda_log', 'status': 'started'}
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\e7570d69-dd4e-4814-b143-d854186864f7_dim_customers_eda_log.json
+[TASK_LOG] {'step': 'eda_log', 'status': 'success'}
+[TASK_LOG] {'step': 'eda_summary', 'status': 'started'}
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\e7570d69-dd4e-4814-b143-d854186864f7_dim_customers_eda_final.json
+[TASK_LOG] {'step': 'eda_summary', 'status': 'success'}
+[TASK_LOG] {'step': 'update_meta_status', 'status': 'skipped'}
+05:00:49.577 | INFO    | Task run 'load_and_analyze_file-195' - Finished in state Completed()
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\6fefeb92-1a04-4f22-83f3-28ad655b4edc_fact_sales_transaction_eda_log.json
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\6fefeb92-1a04-4f22-83f3-28ad655b4edc_fact_sales_transaction_eda_final.json
+[TASK_LOG] {'step': 'advanced_eda', 'status': 'success'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\4. log _advance_eda\6fefeb92-1a04-4f22-83f3-28ad655b4edc_fact_sales_transaction_log__advance_eda.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\5. log_audit_testing\6fefeb92-1a04-4f22-83f3-28ad655b4edc_fact_sales_transaction_log_audit_testing.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\6. log_summary_eda\6fefeb92-1a04-4f22-83f3-28ad655b4edc_fact_sales_transaction_log_summary_eda.json
+[TASK_LOG] {'step': 'eda_log', 'status': 'started'}
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\6fefeb92-1a04-4f22-83f3-28ad655b4edc_fact_sales_transaction_eda_log.json
+[TASK_LOG] {'step': 'eda_log', 'status': 'success'}
+[TASK_LOG] {'step': 'eda_summary', 'status': 'started'}
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\6fefeb92-1a04-4f22-83f3-28ad655b4edc_fact_sales_transaction_eda_final.json
+[TASK_LOG] {'step': 'eda_summary', 'status': 'success'}
+[TASK_LOG] {'step': 'update_meta_status', 'status': 'skipped'}
+05:00:51.115 | INFO    | Task run 'load_and_analyze_file-4cf' - Finished in state Completed()
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\ef971d16-f0c0-48bc-a182-b3cf7fde19d7_stg_sales_transaction_eda_log.json
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\f3ab548e-a15e-44a4-94a5-1550605baabd_sales_transaction_eda_log.json
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\ef971d16-f0c0-48bc-a182-b3cf7fde19d7_stg_sales_transaction_eda_final.json
+[TASK_LOG] {'step': 'advanced_eda', 'status': 'success'}
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\f3ab548e-a15e-44a4-94a5-1550605baabd_sales_transaction_eda_final.json
+[TASK_LOG] {'step': 'advanced_eda', 'status': 'success'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\4. log _advance_eda\ef971d16-f0c0-48bc-a182-b3cf7fde19d7_stg_sales_transaction_log__advance_eda.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\5. log_audit_testing\ef971d16-f0c0-48bc-a182-b3cf7fde19d7_stg_sales_transaction_log_audit_testing.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\4. log _advance_eda\f3ab548e-a15e-44a4-94a5-1550605baabd_sales_transaction_log__advance_eda.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\6. log_summary_eda\ef971d16-f0c0-48bc-a182-b3cf7fde19d7_stg_sales_transaction_log_summary_eda.json
+[TASK_LOG] {'step': 'eda_log', 'status': 'started'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\5. log_audit_testing\f3ab548e-a15e-44a4-94a5-1550605baabd_sales_transaction_log_audit_testing.json
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\ef971d16-f0c0-48bc-a182-b3cf7fde19d7_stg_sales_transaction_eda_log.json
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\6. log_summary_eda\f3ab548e-a15e-44a4-94a5-1550605baabd_sales_transaction_log_summary_eda.json
+[TASK_LOG] {'step': 'eda_log', 'status': 'success'}
+[TASK_LOG] {'step': 'eda_summary', 'status': 'started'}
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+[TASK_LOG] {'step': 'eda_log', 'status': 'started'}
+RuntimeError: main thread is not in main loop
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\c7169629-e329-4058-8630-b8b47a6f03ca_dm_sales_transaction_eda_log.json
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\ef971d16-f0c0-48bc-a182-b3cf7fde19d7_stg_sales_transaction_eda_final.json
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\f3ab548e-a15e-44a4-94a5-1550605baabd_sales_transaction_eda_log.json
+[TASK_LOG] {'step': 'eda_summary', 'status': 'success'}
+[TASK_LOG] {'step': 'eda_log', 'status': 'success'}
+[TASK_LOG] {'step': 'update_meta_status', 'status': 'skipped'}
+[TASK_LOG] {'step': 'eda_summary', 'status': 'started'}
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\c7169629-e329-4058-8630-b8b47a6f03ca_dm_sales_transaction_eda_final.json
+[TASK_LOG] {'step': 'advanced_eda', 'status': 'success'}
+05:00:51.452 | INFO    | Task run 'load_and_analyze_file-c7a' - Finished in state Completed()
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\4. log _advance_eda\c7169629-e329-4058-8630-b8b47a6f03ca_dm_sales_transaction_log__advance_eda.json
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\f3ab548e-a15e-44a4-94a5-1550605baabd_sales_transaction_eda_final.json
+[TASK_LOG] {'step': 'eda_summary', 'status': 'success'}
+[TASK_LOG] {'step': 'update_meta_status', 'status': 'skipped'}
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\5. log_audit_testing\c7169629-e329-4058-8630-b8b47a6f03ca_dm_sales_transaction_log_audit_testing.json
+05:00:51.462 | INFO    | Task run 'load_and_analyze_file-ecb' - Finished in state Completed()
+[STEP_LOG] Saved step log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\6. log_summary_eda\c7169629-e329-4058-8630-b8b47a6f03ca_dm_sales_transaction_log_summary_eda.json
+[TASK_LOG] {'step': 'eda_log', 'status': 'started'}
+[LOG] Saved eda log: C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\data_log\c7169629-e329-4058-8630-b8b47a6f03ca_dm_sales_transaction_eda_log.json
+[TASK_LOG] {'step': 'eda_log', 'status': 'success'}
+[TASK_LOG] {'step': 'eda_summary', 'status': 'started'}
+[EDA_RESULT] Saved summary to C:\Users\ASUS\atlas_project\backend-python\divisional_level\data_eda\eda_result\c7169629-e329-4058-8630-b8b47a6f03ca_dm_sales_transaction_eda_final.json
+[TASK_LOG] {'step': 'eda_summary', 'status': 'success'}
+[TASK_LOG] {'step': 'update_meta_status', 'status': 'skipped'}
+05:00:51.481 | INFO    | Task run 'load_and_analyze_file-273' - Finished in state Completed()
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Image.__del__ at 0x0000023E8EAEC670>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 4017, in __del__
+    self.tk.call('image', 'delete', self.name)
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Image.__del__ at 0x0000023E8EAEC670>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 4017, in __del__
+    self.tk.call('image', 'delete', self.name)
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Image.__del__ at 0x0000023E8EAEC670>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 4017, in __del__
+    self.tk.call('image', 'delete', self.name)
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Image.__del__ at 0x0000023E8EAEC670>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 4017, in __del__
+    self.tk.call('image', 'delete', self.name)
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Image.__del__ at 0x0000023E8EAEC670>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 4017, in __del__
+    self.tk.call('image', 'delete', self.name)
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Image.__del__ at 0x0000023E8EAEC670>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 4017, in __del__
+    self.tk.call('image', 'delete', self.name)
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Image.__del__ at 0x0000023E8EAEC670>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 4017, in __del__
+    self.tk.call('image', 'delete', self.name)
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Image.__del__ at 0x0000023E8EAEC670>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 4017, in __del__
+    self.tk.call('image', 'delete', self.name)
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Image.__del__ at 0x0000023E8EAEC670>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 4017, in __del__
+    self.tk.call('image', 'delete', self.name)
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Exception ignored in: <function Variable.__del__ at 0x0000023E8EAA0D30>
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+    if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+RuntimeError: main thread is not in main loop
+Tcl_AsyncDelete: async handler deleted by the wrong thread
